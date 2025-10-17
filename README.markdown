@@ -56,7 +56,8 @@ nmap -sV -p 21,22,139,443,445,80,8080 192.168.56.101
   ```
 - **Descrição**: Tentativa de força bruta no serviço FTP com 6 threads (`-t 6`) para maior eficiência.
 - **Resultado**: Credenciais válidas (ex.: `msfadmin:msfadmin`).
-- **Captura de Tela**: `/images/screenshot_ftp_success.png`.
+- **Captura de Tela**: `/images/Medusa_FTP.jpg`.
+- - **Captura de Tela**: `/images/Acesso_FTP.jpg`.
 
 #### Ataque 2: Servidor SMB
 - **Enumeração de Usuários**:
@@ -66,11 +67,11 @@ nmap -sV -p 21,22,139,443,445,80,8080 192.168.56.101
   - Este comando enumera usuários SMB, que podem ser usados para atualizar a wordlist `users.txt`.
 - **Ataque com Medusa**:
   ```bash
-  medusa -h 192.168.56.101 -U users.txt -p password -M smbnt
+  medusa -h 192.168.56.101 -U users.txt -P password.txt -M smbnt -t 6
   ```
 - **Descrição**: Password spraying com a senha comum `password` para todos os usuários.
 - **Resultado**: Credenciais válidas (ex.: `msfadmin:password`).
-- **Captura de Tela**: `/images/screenshot_smb_enum.png`.
+- **Captura de Tela**: `/images/SMB_1.jpg`.
 
 #### Ataque 3: DVWA (Formulário Web)
 - **Comando**:
@@ -79,7 +80,8 @@ nmap -sV -p 21,22,139,443,445,80,8080 192.168.56.101
   ```
 - **Descrição**: Ataque de força bruta no formulário de login do DVWA. O formulário HTML deve ser inspecionado para ajustar os parâmetros (`username`, `password`, botão `Login`).
 - **Resultado**: Credenciais válidas (ex.: `admin:password`).
-- **Captura de Tela**: `/images/screenshot_dvwa_login.png`.
+- **Captura de Tela**: `/images/DVWA.jpg`.
+- **Captura de Tela**: `/images/DVWA_2.jpg`.
 - **Observação**: Consulte o código-fonte do formulário para garantir que os parâmetros estejam corretos.
 
 ## Medidas de Mitigação
@@ -143,16 +145,3 @@ chmod +x scripts/*.sh
 - A necessidade de configurar ambientes de teste isolados (rede host-only).
 - A relevância de inspecionar formulários HTML para ataques web.
 - A importância de práticas de segurança para proteger sistemas reais.
-
-## Referências
-- Kali Linux: https://www.kali.org/
-- Metasploitable 2: https://sourceforge.net/projects/metasploitable/
-- Medusa: http://foofus.net/goons/jmk/medusa/medusa.html
-- DVWA: https://github.com/digininja/DVWA
-- Nmap: https://nmap.org/
-- Enum4linux: https://github.com/CiscoCXSecurity/enum4linux
-
-## Autor
-- **Nome**: [Seu Nome]
-- **Data**: 17 de Outubro de 2025
-- **Curso**: DIO - Segurança da Informação
