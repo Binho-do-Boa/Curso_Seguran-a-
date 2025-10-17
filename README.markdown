@@ -22,7 +22,7 @@ Este projeto foi desenvolvido como parte do curso de Segurança da Informação 
 
 ## Configuração e Testes
 
-### 1. Criação de Wordlists
+### 1. Criando a Wordlists
 Para os testes, criamos wordlists simples manualmente. Em cenários reais, recomenda-se usar wordlists mais robustas disponíveis na internet.
 
 - **Usuários** (`users.txt`):
@@ -94,7 +94,7 @@ nmap -sV -p 21,22,139,443,445,80,8080 192.168.56.101
 
 ## Estrutura do Repositório
 ```
-meu-projeto-seguranca/
+Curso_Seguranca_DIO/
 ├── README.md
 ├── wordlists/
 │   ├── users.txt
